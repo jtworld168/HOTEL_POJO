@@ -28,7 +28,7 @@
 
         <el-dropdown trigger="click">
           <el-button circle>
-            <el-icon><Globe /></el-icon>
+            <el-icon><Switch /></el-icon>
           </el-button>
           <template #dropdown>
             <el-dropdown-menu>
