@@ -36,6 +36,8 @@ export default {
     register: '注册账号',
     usernamePlaceholder: '请输入用户名',
     passwordPlaceholder: '请输入密码',
+    usernameRequired: '请输入用户名',
+    passwordRequired: '请输入密码',
   },
   register: {
     title: '用户注册',
@@ -52,12 +54,19 @@ export default {
     confirmPasswordPlaceholder: '请再次输入密码',
     emailPlaceholder: '请输入邮箱',
     phonePlaceholder: '请输入手机号',
+    usernameRequired: '请输入用户名',
+    passwordRequired: '请输入密码',
+    passwordMinLength: '密码长度不能少于6位',
+    confirmPasswordRequired: '请再次输入密码',
+    passwordMismatch: '两次输入密码不一致',
   },
   home: {
     welcome: '欢迎来到酒店大堂便利店',
     allProducts: '全部商品',
     hotProducts: '热门商品',
     newProducts: '新品上架',
+    welcomeBack: '欢迎回来',
+    emptyProducts: '暂无商品',
   },
   product: {
     detail: '商品详情',
@@ -70,6 +79,7 @@ export default {
     buyNow: '立即购买',
     description: '商品描述',
     outOfStock: '缺货',
+    quantity: '数量',
   },
   cart: {
     title: '购物车',
@@ -109,6 +119,7 @@ export default {
     minAmount: '最低消费',
     validPeriod: '有效期',
     use: '使用',
+    empty: '暂无优惠券',
   },
   scanner: {
     title: '扫描商品条形码',

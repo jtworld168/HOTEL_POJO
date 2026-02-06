@@ -77,11 +77,13 @@
 <script setup lang="ts">
 import { ref, reactive } from 'vue'
 import { useRouter } from 'vue-router'
+import { useI18n } from 'vue-i18n'
 import { register } from '@/api/user'
 import { ElMessage } from 'element-plus'
 import type { FormInstance, FormRules } from 'element-plus'
 
 const router = useRouter()
+const { t } = useI18n()
 const formRef = ref<FormInstance>()
 const loading = ref(false)
 
@@ -95,20 +97,20 @@ const form = reactive({
 
 const validatePassword = (_rule: any, value: any, callback: any) => {
   if (value !== form.password) {
-    callback(new Error('两次输入密码不一致'))
+    callback(new Error(t('register.passwordMismatch')))
   } else {
     callback()
   }
 }
 
 const rules: FormRules = {
-  username: [{ required: true, message: '请输入用户名', trigger: 'blur' }],
+  username: [{ required: true, message: t('register.usernameRequired'), trigger: 'blur' }],
   password: [
-    { required: true, message: '请输入密码', trigger: 'blur' },
-    { min: 6, message: '密码长度不能少于6位', trigger: 'blur' },
+    { required: true, message: t('register.passwordRequired'), trigger: 'blur' },
+    { min: 6, message: t('register.passwordMinLength'), trigger: 'blur' },
   ],
   confirmPassword: [
-    { required: true, message: '请再次输入密码', trigger: 'blur' },
+    { required: true, message: t('register.confirmPasswordRequired'), trigger: 'blur' },
     { validator: validatePassword, trigger: 'blur' },
   ],
 }

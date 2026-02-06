@@ -49,7 +49,7 @@
               </div>
             </div>
             
-            <el-empty v-if="!loading && coupons.length === 0" description="暂无优惠券" />
+            <el-empty v-if="!loading && coupons.length === 0" :description="$t('coupon.empty')" />
           </el-tab-pane>
           
           <el-tab-pane :label="$t('coupon.myCoupons')" name="my">
@@ -83,7 +83,7 @@
               </div>
             </div>
             
-            <el-empty v-if="!loadingMy && myCoupons.length === 0" description="暂无优惠券" />
+            <el-empty v-if="!loadingMy && myCoupons.length === 0" :description="$t('coupon.empty')" />
           </el-tab-pane>
         </el-tabs>
       </el-card>

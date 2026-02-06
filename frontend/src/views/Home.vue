@@ -13,7 +13,7 @@
 
       <div class="welcome-section">
         <h2>{{ $t('home.welcome') }}</h2>
-        <p v-if="userStore.userInfo">欢迎回来，{{ userStore.userInfo.username }}！</p>
+        <p v-if="userStore.userInfo">{{ $t('home.welcomeBack') }}，{{ userStore.userInfo.username }}！</p>
       </div>
 
       <div class="products-section">
@@ -25,7 +25,7 @@
           <ProductCard v-for="product in products" :key="product.id" :product="product" />
         </div>
         
-        <el-empty v-if="!loading && products.length === 0" description="暂无商品" />
+        <el-empty v-if="!loading && products.length === 0" :description="$t('home.emptyProducts')" />
       </div>
     </div>
   </div>

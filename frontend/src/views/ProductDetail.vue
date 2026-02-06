@@ -46,7 +46,7 @@
             </div>
             
             <div class="quantity-selector">
-              <span class="label">数量：</span>
+              <span class="label">{{ $t('product.quantity') }}：</span>
               <el-input-number v-model="quantity" :min="1" :max="product.stock" />
             </div>
             

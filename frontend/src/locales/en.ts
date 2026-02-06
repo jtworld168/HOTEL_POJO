@@ -36,6 +36,8 @@ export default {
     register: 'Register',
     usernamePlaceholder: 'Enter username',
     passwordPlaceholder: 'Enter password',
+    usernameRequired: 'Please enter username',
+    passwordRequired: 'Please enter password',
   },
   register: {
     title: 'Register',
@@ -52,12 +54,19 @@ export default {
     confirmPasswordPlaceholder: 'Enter password again',
     emailPlaceholder: 'Enter email',
     phonePlaceholder: 'Enter phone',
+    usernameRequired: 'Please enter username',
+    passwordRequired: 'Please enter password',
+    passwordMinLength: 'Password must be at least 6 characters',
+    confirmPasswordRequired: 'Please enter password again',
+    passwordMismatch: 'Passwords do not match',
   },
   home: {
     welcome: 'Welcome to Hotel Lobby Store',
     allProducts: 'All Products',
     hotProducts: 'Hot Products',
     newProducts: 'New Arrivals',
+    welcomeBack: 'Welcome back',
+    emptyProducts: 'No products available',
   },
   product: {
     detail: 'Product Detail',
@@ -70,6 +79,7 @@ export default {
     buyNow: 'Buy Now',
     description: 'Description',
     outOfStock: 'Out of Stock',
+    quantity: 'Quantity',
   },
   cart: {
     title: 'Shopping Cart',
@@ -109,6 +119,7 @@ export default {
     minAmount: 'Min Amount',
     validPeriod: 'Valid Period',
     use: 'Use',
+    empty: 'No coupons available',
   },
   scanner: {
     title: 'Scan Product Barcode',

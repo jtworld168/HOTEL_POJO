@@ -83,6 +83,7 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
 import { useRouter } from 'vue-router'
+import { useI18n } from 'vue-i18n'
 import { ElMessageBox, ElMessage } from 'element-plus'
 import Header from '@/components/Header.vue'
 import { useCartStore } from '@/store/cart'
@@ -91,6 +92,7 @@ import { createOrder } from '@/api/order'
 import type { CartItem } from '@/api/cart'
 
 const router = useRouter()
+const { t } = useI18n()
 const cartStore = useCartStore()
 const userStore = useUserStore()
 
@@ -118,11 +120,11 @@ const handleRemove = async (id: number) => {
 const handleClearCart = async () => {
   try {
     await ElMessageBox.confirm(
-      '确认清空购物车吗？',
-      '提示',
+      t('cart.confirmClear'),
+      t('common.confirm'),
       {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
+        confirmButtonText: t('common.confirm'),
+        cancelButtonText: t('common.cancel'),
         type: 'warning',
       }
     )
