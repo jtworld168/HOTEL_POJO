@@ -15,12 +15,12 @@
             <div class="price-section">
               <div v-if="showEmployeePrice" class="employee-price-container">
                 <span class="label">{{ $t('product.employeePrice') }}：</span>
-                <span class="employee-price">¥{{ product.employeePrice?.toFixed(2) }}</span>
+                <span class="employee-price">¥{{ product.employeePrice?.toFixed(2) ?? '0.00' }}</span>
               </div>
               <div class="price-container">
                 <span class="label">{{ $t('product.price') }}：</span>
                 <span :class="{ 'original-price': showEmployeePrice, 'price': !showEmployeePrice }">
-                  ¥{{ product.price.toFixed(2) }}
+                  ¥{{ product.price?.toFixed(2) ?? '0.00' }}
                 </span>
               </div>
             </div>

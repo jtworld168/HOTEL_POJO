@@ -56,6 +56,10 @@ const goToDetail = () => {
 }
 
 const addToCart = () => {
+  if (!props.product.id) {
+    console.error('Product ID is missing')
+    return
+  }
   cartStore.addToCart({
     productId: props.product.id,
     quantity: 1,
