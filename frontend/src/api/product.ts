@@ -13,13 +13,13 @@ export interface Product {
 }
 
 export const getProductList = () => {
-  return request.get<Result<Product[]>>('/product/list')
+  return request.get<Result<Product[]>>('/api/product/list')
 }
 
 export const getProduct = (id: number) => {
-  return request.get<Result<Product>>(`/product/${id}`)
+  return request.get<Result<Product>>(`/api/product/${id}`)
 }
 
 export const getProductByBarcode = (barcode: string) => {
-  return request.get<Result<Product>>(`/product/barcode/${barcode}`)
+  return request.get<Result<Product>>(`/api/product/barcode/${barcode}`)
 }

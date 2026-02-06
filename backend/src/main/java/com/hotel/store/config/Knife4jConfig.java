@@ -22,15 +22,13 @@ public class Knife4jConfig {
                         .contact(new Contact()
                                 .name("Hotel Store")
                                 .email("support@hotelstore.com")))
-                .addSecurityItem(new SecurityRequirement().addList("SaToken"))
+                .addSecurityItem(new SecurityRequirement().addList("Authorization"))
                 .components(new io.swagger.v3.oas.models.Components()
-                        .addSecuritySchemes("SaToken",
+                        .addSecuritySchemes("Authorization",
                                 new SecurityScheme()
-                                        .type(SecurityScheme.Type.HTTP)
-                                        .scheme("bearer")
-                                        .bearerFormat("JWT")
+                                        .type(SecurityScheme.Type.APIKEY)
                                         .in(SecurityScheme.In.HEADER)
-                                        .name("satoken")));
+                                        .name("Authorization")));
     }
     
     @Bean

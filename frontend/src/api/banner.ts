@@ -9,5 +9,5 @@ export interface Banner {
 }
 
 export const getBannerList = () => {
-  return request.get<Result<Banner[]>>('/banner/list')
+  return request.get<Result<Banner[]>>('/api/banner/active')
 }

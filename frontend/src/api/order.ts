@@ -20,9 +20,9 @@ export interface CreateOrderParams {
 }
 
 export const createOrder = (data: CreateOrderParams) => {
-  return request.post<Result<Order>>('/order/create', data)
+  return request.post<Result<Order>>('/api/order', data)
 }
 
 export const getOrderList = () => {
-  return request.get<Result<Order[]>>('/order/list')
+  return request.get<Result<Order[]>>('/api/order/list')
 }

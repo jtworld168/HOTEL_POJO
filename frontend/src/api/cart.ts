@@ -21,21 +21,21 @@ export interface UpdateCartParams {
 }
 
 export const addToCart = (data: AddCartParams) => {
-  return request.post<Result<void>>('/cart/add', data)
+  return request.post<Result<void>>('/api/cart', data)
 }
 
 export const getCartList = () => {
-  return request.get<Result<CartItem[]>>('/cart/list')
+  return request.get<Result<CartItem[]>>('/api/cart/list')
 }
 
 export const updateCart = (data: UpdateCartParams) => {
-  return request.put<Result<void>>('/cart/update', data)
+  return request.put<Result<void>>(`/api/cart/${data.id}`, data)
 }
 
 export const removeFromCart = (id: number) => {
-  return request.delete<Result<void>>(`/cart/${id}`)
+  return request.delete<Result<void>>(`/api/cart/${id}`)
 }
 
 export const clearCart = () => {
-  return request.delete<Result<void>>('/cart/clear')
+  return request.delete<Result<void>>('/api/cart/clear')
 }

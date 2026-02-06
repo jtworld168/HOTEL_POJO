@@ -13,13 +13,13 @@ export interface Coupon {
 }
 
 export const getCouponList = () => {
-  return request.get<Result<Coupon[]>>('/coupon/list')
+  return request.get<Result<Coupon[]>>('/api/coupon/list')
 }
 
 export const claimCoupon = (id: number) => {
-  return request.post<Result<void>>(`/coupon/claim/${id}`)
+  return request.post<Result<void>>(`/api/coupon/${id}/claim`)
 }
 
 export const getUserCoupons = () => {
-  return request.get<Result<Coupon[]>>('/coupon/user')
+  return request.get<Result<Coupon[]>>('/api/coupon/my')
 }

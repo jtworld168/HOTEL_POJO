@@ -28,17 +28,17 @@ export interface UpdateUserParams {
 }
 
 export const login = (data: LoginParams) => {
-  return request.post<Result<{ token: string }>>('/user/login', data)
+  return request.post<Result<{ token: string }>>('/api/user/login', data)
 }
 
 export const register = (data: RegisterParams) => {
-  return request.post<Result<void>>('/user/register', data)
+  return request.post<Result<void>>('/api/user/register', data)
 }
 
 export const getUserInfo = () => {
-  return request.get<Result<UserInfo>>('/user/info')
+  return request.get<Result<UserInfo>>('/api/user/info')
 }
 
 export const updateUser = (data: UpdateUserParams) => {
-  return request.put<Result<void>>('/user/update', data)
+  return request.put<Result<void>>('/api/user/info', data)
 }
