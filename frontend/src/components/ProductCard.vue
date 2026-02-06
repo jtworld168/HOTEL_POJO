@@ -8,10 +8,10 @@
       <div class="name">{{ product.name }}</div>
       <div class="price-container">
         <span v-if="showEmployeePrice" class="employee-price">
-          ¥{{ product.employeePrice?.toFixed(2) }}
+          ¥{{ product.employeePrice?.toFixed(2) ?? '0.00' }}
         </span>
         <span :class="{ 'original-price': showEmployeePrice, 'price': !showEmployeePrice }">
-          ¥{{ product.price?.toFixed(2) || '0.00' }}
+          ¥{{ product.price?.toFixed(2) ?? '0.00' }}
         </span>
       </div>
       <div class="bottom">
