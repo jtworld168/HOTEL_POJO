@@ -18,22 +18,10 @@ export default {
   methods: {
     checkTokenValidity() {
       // 可选：验证token是否仍然有效
-      uni.request({
-        url: this.globalData.baseUrl + '/api/user/info',
-        method: 'GET',
-        header: {
-          'Authorization': uni.getStorageSync('token')
-        },
-        fail: () => {
-          // token无效，清除
-          uni.removeStorageSync('token')
-          uni.removeStorageSync('userInfo')
-        }
-      })
+      // 注意：这里简化了验证逻辑，实际的token验证在request.js中统一处理
     }
   },
   globalData: {
-    baseUrl: 'http://localhost:8080',
     userInfo: null
   }
 }

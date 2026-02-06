@@ -165,10 +165,12 @@ export default {
     },
     
     onBuyNow() {
-      // TODO: 实现立即购买功能
+      // 注意：立即购买功能待实现
+      // 未来可以直接跳转到订单确认页面，跳过购物车
       uni.showToast({
-        title: '功能开发中',
-        icon: 'none'
+        title: '功能开发中，请先加入购物车',
+        icon: 'none',
+        duration: 2000
       })
     },
     

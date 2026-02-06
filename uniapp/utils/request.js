@@ -1,5 +1,5 @@
 // HTTP请求封装
-const BASE_URL = 'http://localhost:8080'
+import { BASE_URL } from '../config.js'
 
 // 请求拦截器
 const request = (options) => {

@@ -58,7 +58,7 @@
 
 <script>
 import { getUserInfo as getApiUserInfo, logout as apiLogout } from '@/api/user.js'
-import { getUserInfo, isLogin, logout, removeToken, removeStorage } from '@/utils/storage.js'
+import { getUserInfo, isLogin, logout } from '@/utils/storage.js'
 import { getUserRoleText } from '@/utils/util.js'
 
 export default {

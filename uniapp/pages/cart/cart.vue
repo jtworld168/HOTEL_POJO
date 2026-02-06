@@ -173,10 +173,16 @@ export default {
         return
       }
       
-      // TODO: 跳转到结算页面
+      // 注意：订单结算页面待实现
+      // 未来需要创建订单确认页面，包含：
+      // 1. 商品列表
+      // 2. 优惠券选择
+      // 3. 配送信息
+      // 4. 支付方式选择
       uni.showToast({
-        title: '功能开发中',
-        icon: 'none'
+        title: '订单结算功能开发中',
+        icon: 'none',
+        duration: 2000
       })
     },
     

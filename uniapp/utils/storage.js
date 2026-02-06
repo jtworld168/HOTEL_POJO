@@ -15,7 +15,8 @@ export const setStorage = (key, value) => {
 export const getStorage = (key, defaultValue = null) => {
   try {
     const value = uni.getStorageSync(key)
-    return value || defaultValue
+    // 明确检查 null 和 undefined，避免将 false、0、'' 等有效值误判
+    return (value !== null && value !== undefined) ? value : defaultValue
   } catch (e) {
     console.error('获取数据失败', e)
     return defaultValue
