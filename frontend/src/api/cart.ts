@@ -29,7 +29,7 @@ export const getCartList = () => {
 }
 
 export const updateCart = (data: UpdateCartParams) => {
-  return request.put<Result<void>>(`/api/cart/${data.id}`, data)
+  return request.put<Result<void>>(`/api/cart/${data.id}`, { quantity: data.quantity })
 }
 
 export const removeFromCart = (id: number) => {
