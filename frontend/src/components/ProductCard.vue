@@ -8,10 +8,10 @@
       <div class="name">{{ product.name }}</div>
       <div class="price-container">
         <span v-if="showEmployeePrice" class="employee-price">
-          ¥{{ product.employeePrice?.toFixed(2) }}
+          ¥{{ product.employeePrice?.toFixed(2) ?? '0.00' }}
         </span>
         <span :class="{ 'original-price': showEmployeePrice, 'price': !showEmployeePrice }">
-          ¥{{ product.price.toFixed(2) }}
+          ¥{{ product.price?.toFixed(2) ?? '0.00' }}
         </span>
       </div>
       <div class="bottom">
@@ -52,10 +52,18 @@ const showEmployeePrice = computed(() => {
 })
 
 const goToDetail = () => {
+  if (!props.product.id) {
+    console.error('Product ID is missing')
+    return
+  }
   router.push(`/product/${props.product.id}`)
 }
 
 const addToCart = () => {
+  if (!props.product.id) {
+    console.error('Product ID is missing')
+    return
+  }
   cartStore.addToCart({
     productId: props.product.id,
     quantity: 1,

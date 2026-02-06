@@ -15,12 +15,12 @@
             <div class="price-section">
               <div v-if="showEmployeePrice" class="employee-price-container">
                 <span class="label">{{ $t('product.employeePrice') }}：</span>
-                <span class="employee-price">¥{{ product.employeePrice?.toFixed(2) }}</span>
+                <span class="employee-price">¥{{ product.employeePrice?.toFixed(2) ?? '0.00' }}</span>
               </div>
               <div class="price-container">
                 <span class="label">{{ $t('product.price') }}：</span>
                 <span :class="{ 'original-price': showEmployeePrice, 'price': !showEmployeePrice }">
-                  ¥{{ product.price.toFixed(2) }}
+                  ¥{{ product.price?.toFixed(2) ?? '0.00' }}
                 </span>
               </div>
             </div>
@@ -105,6 +105,12 @@ const loadProduct = async () => {
   loading.value = true
   try {
     const id = Number(route.params.id)
+    if (isNaN(id) || id <= 0) {
+      console.error('Invalid product ID:', route.params.id)
+      loading.value = false
+      router.push({ name: 'Home' })
+      return
+    }
     const { data } = await getProduct(id)
     product.value = data.data
   } catch (error) {
