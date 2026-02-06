@@ -107,6 +107,7 @@ const loadProduct = async () => {
     const id = Number(route.params.id)
     if (isNaN(id) || id <= 0) {
       console.error('Invalid product ID:', route.params.id)
+      loading.value = false
       router.push({ name: 'Home' })
       return
     }
