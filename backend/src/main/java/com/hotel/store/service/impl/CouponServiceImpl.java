@@ -1,6 +1,7 @@
 package com.hotel.store.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.hotel.store.dto.UserCouponVO;
 import com.hotel.store.entity.Coupon;
@@ -82,6 +83,16 @@ public class CouponServiceImpl implements CouponService {
             throw new RuntimeException("已经领取过该优惠券");
         }
         
+        int updated = couponMapper.update(null, 
+            new UpdateWrapper<Coupon>()
+                .eq("id", couponId)
+                .gt("remain_count", 0)
+                .setSql("remain_count = remain_count - 1"));
+        
+        if (updated == 0) {
+            throw new RuntimeException("优惠券已被领完");
+        }
+        
         UserCoupon userCoupon = new UserCoupon();
         userCoupon.setUserId(userId);
         userCoupon.setCouponId(couponId);
@@ -89,9 +100,6 @@ public class CouponServiceImpl implements CouponService {
         userCoupon.setDeleted(0);
         
         userCouponMapper.insert(userCoupon);
-        
-        coupon.setRemainCount(coupon.getRemainCount() - 1);
-        couponMapper.updateById(coupon);
     }
     
     @Override

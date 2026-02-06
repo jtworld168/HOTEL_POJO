@@ -1,6 +1,7 @@
 package com.hotel.store.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.hotel.store.dto.CreateOrderRequest;
 import com.hotel.store.dto.OrderVO;
@@ -152,8 +153,15 @@ public class OrderServiceImpl implements OrderService {
             
             orderItemMapper.insert(item);
             
-            product.setStock(product.getStock() - cart.getQuantity());
-            productMapper.updateById(product);
+            int updated = productMapper.update(null,
+                new UpdateWrapper<Product>()
+                    .eq("id", product.getId())
+                    .ge("stock", cart.getQuantity())
+                    .setSql("stock = stock - " + cart.getQuantity()));
+            
+            if (updated == 0) {
+                throw new RuntimeException("商品库存不足: " + product.getName());
+            }
         }
         
         cartMapper.delete(cartWrapper);
@@ -232,11 +240,10 @@ public class OrderServiceImpl implements OrderService {
         List<OrderItem> items = orderItemMapper.selectList(wrapper);
         
         for (OrderItem item : items) {
-            Product product = productMapper.selectById(item.getProductId());
-            if (product != null) {
-                product.setStock(product.getStock() + item.getQuantity());
-                productMapper.updateById(product);
-            }
+            productMapper.update(null,
+                new UpdateWrapper<Product>()
+                    .eq("id", item.getProductId())
+                    .setSql("stock = stock + " + item.getQuantity()));
         }
         
         if (order.getCouponId() != null) {
@@ -258,8 +265,8 @@ public class OrderServiceImpl implements OrderService {
     }
     
     private String generateOrderNo() {
-        String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddHHmmss"));
-        long counter = orderNoCounter.incrementAndGet() % 10000;
-        return String.format("ORD%s%04d", timestamp, counter);
+        String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddHHmmssSSS"));
+        long counter = orderNoCounter.incrementAndGet() % 100000;
+        return String.format("ORD%s%05d", timestamp, counter);
     }
 }
