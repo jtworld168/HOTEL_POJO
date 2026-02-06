@@ -19,6 +19,12 @@ frontend/.vite/
 frontend/.env.local
 frontend/.env.*.local
 
+# UniApp
+uniapp/node_modules/
+uniapp/unpackage/
+uniapp/.hbuilderx/
+uniapp/dist/
+
 # Logs
 *.log
 logs/
