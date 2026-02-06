@@ -66,8 +66,9 @@ export const getImageUrl = (path) => {
   }
   
   // 如果是相对路径，拼接baseUrl
-  const BASE_URL = 'http://localhost:8080'
-  return BASE_URL + path
+  // 注意：BASE_URL 应该从 config.js 导入，避免硬编码
+  // 这里为了保持工具函数的独立性，建议调用时传入完整URL或相对路径
+  return path.startsWith('/') ? path : '/' + path
 }
 
 // 订单状态文本

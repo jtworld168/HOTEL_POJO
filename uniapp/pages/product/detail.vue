@@ -165,8 +165,11 @@ export default {
     },
     
     onBuyNow() {
-      // 注意：立即购买功能待实现
-      // 未来可以直接跳转到订单确认页面，跳过购物车
+      // TODO: Implement buy now feature - allow direct checkout without adding to cart
+      // Requirements:
+      // 1. Create order confirmation page
+      // 2. Pass product and quantity directly
+      // 3. Skip cart step for faster checkout
       uni.showToast({
         title: '功能开发中，请先加入购物车',
         icon: 'none',

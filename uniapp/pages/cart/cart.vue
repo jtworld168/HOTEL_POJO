@@ -173,12 +173,13 @@ export default {
         return
       }
       
-      // 注意：订单结算页面待实现
-      // 未来需要创建订单确认页面，包含：
-      // 1. 商品列表
-      // 2. 优惠券选择
-      // 3. 配送信息
-      // 4. 支付方式选择
+      // TODO: Implement checkout flow with order confirmation page
+      // Required components:
+      // 1. Product list summary
+      // 2. Coupon selection interface
+      // 3. Delivery information form
+      // 4. Payment method selection
+      // 5. Order total calculation
       uni.showToast({
         title: '订单结算功能开发中',
         icon: 'none',
