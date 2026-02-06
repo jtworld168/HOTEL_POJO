@@ -52,6 +52,10 @@ const showEmployeePrice = computed(() => {
 })
 
 const goToDetail = () => {
+  if (!props.product.id) {
+    console.error('Product ID is missing')
+    return
+  }
   router.push(`/product/${props.product.id}`)
 }
 

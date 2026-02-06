@@ -105,6 +105,11 @@ const loadProduct = async () => {
   loading.value = true
   try {
     const id = Number(route.params.id)
+    if (isNaN(id) || id <= 0) {
+      console.error('Invalid product ID:', route.params.id)
+      router.push('/home')
+      return
+    }
     const { data } = await getProduct(id)
     product.value = data.data
   } catch (error) {
